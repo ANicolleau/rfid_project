@@ -1,9 +1,8 @@
-from nfc_reader import NfcReader
+from nfc_reader_manager import NfcReadersManager
 from exception.exception import NoNfcReaderException
 from log.logger import logger
 import optparse
 
-contributors = ['Antoine Nicolleau']
 parser = optparse.OptionParser
 
 try:
@@ -11,8 +10,9 @@ try:
           u'Before continue, check if your NFC Reader is connected to your computer. '
           u'Press Enter to continue')
     input()
-    nfc_reader = NfcReader()
-    readers = nfc_reader.get_readers()
+    nfc_reader_manager = NfcReadersManager()
+    readers = nfc_reader_manager.get_readers()
+    readers.append('lalalalal')
     if len(readers) > 1:
         selected_reader = None
         print(u'We found more than one NFC reader connected to your computer :')
@@ -34,7 +34,13 @@ try:
     else:
         selected_reader = 0
 
-    nfc_reader.get_connection(selected_reader)
+    nfc_reader_manager.set_connection(selected_reader)
+    nfc_reader = nfc_reader_manager.get_reader()
+    print('If your badge is on your NFC reader, press enter to continue')
+    input()
+    # TODO Faire une Exception pour un badge non existant
+    nfc_reader.connect()
+    print('ATR of your badge : %s' % nfc_reader.getATR())
 
 except NoNfcReaderException:
     logger.error('Aucun Lecteur NFC trouvé')
