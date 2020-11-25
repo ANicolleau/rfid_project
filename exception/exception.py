@@ -1,0 +1,2 @@
+class NoNfcReaderException(Exception):
+    pass
