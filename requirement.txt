@@ -1,1 +1,18 @@
+ansicon==1.89.0
+blessed==1.17.6
+certifi==2020.12.5
+chardet==3.0.4
+idna==2.10
+inquirer==2.7.0
+jinxed==1.0.1
+Naked==0.1.31
+pycrypto==2.6.1
 pyscard @ file:///D:/Cours_M1/Yday/rfid_project/python_lib/pyscard-1.9.7-cp36-cp36m-win_amd64.whl
+python-editor==1.0.4
+PyYAML==5.3.1
+readchar==2.0.1
+requests==2.25.0
+shellescape==3.8.1
+six==1.15.0
+urllib3==1.26.2
+wcwidth==0.2.5

@@ -1,8 +1,7 @@
-from smartcard.ATR import ATR
-from smartcard.util import toHexString
-from exception.exception import NoNfcReaderException
-from smartcard.System import readers
 from smartcard.CardConnectionDecorator import CardConnectionDecorator
+from smartcard.System import readers
+
+from project.exception import NoNfcReaderException
 
 
 class NfcReadersManager(object):
