@@ -4,7 +4,7 @@ import inquirer
 from smartcard.Exceptions import NoCardException
 from smartcard.util import toHexString
 
-from project.exception import NoNfcReaderException
+from project.exception.exception import NoNfcReaderException
 from project.log import logger
 from project.nfc_reader_manager import NfcReadersManager
 

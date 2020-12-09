@@ -1,7 +1,7 @@
 from smartcard.CardConnectionDecorator import CardConnectionDecorator
 from smartcard.System import readers
 
-from project.exception import NoNfcReaderException
+from project.exception.exception import NoNfcReaderException
 
 
 class NfcReadersManager(object):
