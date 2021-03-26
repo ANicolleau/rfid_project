@@ -1,14 +1,16 @@
 from smartcard.CardConnectionDecorator import CardConnectionDecorator
 from smartcard.System import readers
-
-from project.exception.exception import NoNfcReaderException
+from typing import Optional, List
+from exception.exception import NoNfcReaderException
+from smartcard.util import toHexString
 
 
 class NfcReadersManager(object):
     def __init__(self):
         # type: () -> None
         self.readers = readers()  # type: readers
-        self.reader = None
+        self.reader = None  # type: Optional[CardConnectionDecorator]
+        self.card_atr = []  # type: List
 
         if not self.readers:
             raise NoNfcReaderException()
@@ -32,3 +34,11 @@ class NfcReadersManager(object):
     def set_reader(self, reader):
         # type: (CardConnectionDecorator) -> None
         self.reader = reader
+
+    def dump_card(self):
+        self.card_atr = self.reader.getATR()
+        print(u'Your card ATR is : %s' % self.card_atr)
+
+    def paste_on_card(self):
+        print(u'ATR saved in card')
+        return self.reader.transmit(toHexString(self.card_atr))
